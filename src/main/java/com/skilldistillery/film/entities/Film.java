@@ -5,6 +5,7 @@ import com.skilldistillery.mvcfilmsite.database.DatabaseAccessor;
 import com.skilldistillery.mvcfilmsite.database.DatabaseAccessorObject;
 
 public class Film {
+	private int helloJustin;
 	private int id;
 	private String title;
 	private String description;

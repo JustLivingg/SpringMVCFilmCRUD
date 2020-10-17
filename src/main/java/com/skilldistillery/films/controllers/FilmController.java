@@ -14,10 +14,10 @@ public class FilmController {
 	    return mv;
 	  }
 	
-	@RequestMapping(path = "findFilmbyId.do", method = RequestMethod.GET)
-	public ModelAndView findFilmById(@RequestParam("id") int filmId) {
-		ModelAndView mv = new ModelAndView();
-		
-	}
+//	@RequestMapping(path = "findFilmbyId.do", method = RequestMethod.GET)
+//	public ModelAndView findFilmById(@RequestParam("id") int filmId) {
+//		ModelAndView mv = new ModelAndView();
+//		
+//	}
 	
 }

@@ -13,11 +13,6 @@ public class FilmController {
 	    mv.setViewName("WEB-INF/index.html");
 	    return mv;
 	  }
-	
-	@RequestMapping(path = "findFilmbyId.do", method = RequestMethod.GET)
-	public ModelAndView findFilmById(@RequestParam("id") int filmId) {
-		ModelAndView mv = new ModelAndView();
-		
-	}
+
 	
 }

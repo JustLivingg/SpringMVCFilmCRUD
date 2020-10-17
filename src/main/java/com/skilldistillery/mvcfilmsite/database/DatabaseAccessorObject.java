@@ -234,6 +234,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				film = null;
 			}
 			conn.commit(); // COMMIT TRANSACTION
+			stmt.close();
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -265,6 +267,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setInt(1, film.getId());
 			updateCount = stmt.executeUpdate();
 			conn.commit(); // COMMIT TRANSACTION
+			stmt.close();
+			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -279,5 +283,42 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		return true;
 	}
 
+	@Override
+	public boolean updateFilm(Film film, String column, String columnValue) {
+		Connection conn = null;
+
+		try {
+			conn = DriverManager.getConnection(URL, user, pass);
+			conn.setAutoCommit(false); // START TRANSACTION
+
+			String sql = "UPDATE FILM SET column = columnValue " + "WHERE id = ?";
+
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, film.getId());
+
+			int updateCount = stmt.executeUpdate();
+
+			if (updateCount == 0) {
+				return false;
+			}
+
+			conn.commit();
+			stmt.close();
+			conn.close();
+		} catch (SQLException sqle) {
+			// TODO Auto-generated catch block
+			sqle.printStackTrace();
+		}
+		if (conn != null) {
+			try {
+				conn.rollback();
+			} catch (SQLException sqle) {
+				System.err.print("Error trying toll rollback.");
+			}
+		}
+
+		return true;
+
+	}
 
 }

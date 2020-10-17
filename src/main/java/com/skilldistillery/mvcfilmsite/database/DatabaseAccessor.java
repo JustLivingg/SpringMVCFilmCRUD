@@ -19,4 +19,6 @@ public interface DatabaseAccessor {
   
   public boolean deleteFilm(Film film);
   
+  public boolean updateFilm(Film film, String column, String columnValue);
+  
 }

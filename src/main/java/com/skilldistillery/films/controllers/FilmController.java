@@ -8,7 +8,10 @@ public class FilmController {
 	@RequestMapping(path="index.do", method=RequestMethod.GET)
 	  public ModelAndView index() {
 	    ModelAndView mv = new ModelAndView();
-	    mv.setViewName("WEB-INF/home.jsp");
+	    mv.setViewName("WEB-INF/filminfo.jsp");
 	    return mv;
 	  }
+	
+	
+	
 }

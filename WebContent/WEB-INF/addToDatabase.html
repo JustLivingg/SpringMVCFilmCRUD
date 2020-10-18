@@ -5,11 +5,46 @@
 <title>addToDatabase</title>
 </head>
 <body>
-<h3>States</h3>
-	<form action="AddToDatabase.do" method="GET">
-		Abbreviation:
-		<input type="text" name="abbr" size="4"/> 
-		<input type="submit" value="Add Film to Database" />
+	<h3>Enter A New Film Below</h3>
+	<br>
+	<form action="AddToDatabase.do" method="POST">
+		<label for="title"><strong>Enter film title:</strong></label><br> 
+			<textarea id="title" name="title" rows="1" cols="30"></textarea><br> 
+			
+			<label
+			for="rating"><strong>Select film rating:</strong></label><br> 
+			<input type="radio" id="G" name="rating" value="G"> G 
+			<input type="radio" id="PG" name="rating" value="PG"> PG <input type="radio" id="PG-13"
+			name="rating" value="PG-13"> PG-13 <input type="radio" id="R"
+			name="rating" value="R">R <input type="radio" id="NC-17"
+			name="rating" value="NC-17"> NC-17<br> 
+			
+			<label for="language"><strong>Enter film language:</strong></label><br> 
+			<input type="checkbox" id="lang1" name="lang1" value="English"> English
+			<input type="checkbox" id="lang2" name="lang2" value="Italian"> Italian
+			<input type="checkbox" id="lang3" name="lang3" value="Japanese"> Japanese
+		<input type="checkbox" id="lang4" name="lang4" value="Mandarin"> Mandarin
+		<input type="checkbox" id="lang5" name="lang5" value="French"> French
+		<input type="checkbox" id="lang6" name="lang6" value="German"> German
+		
+		<br> <label for="description"><strong>Enter film description</strong></label><br>
+		<textarea id="description" name="description" rows="3" cols="50"></textarea>
+		<br> 
+		<label for="actors"><strong>Enter actors:</strong></label><br>
+		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea>
+		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea>
+		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea>
+		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea>
+		 <br>
+		 
+		 <label for="length"><strong>Enter film length:</strong></label><br>
+		 <input type="text" id="length" name="length"><br>
+		 
+		 
+		 <br>
+		 <br>
+		<input type="submit">
+
 	</form>
 </body>
 </html>

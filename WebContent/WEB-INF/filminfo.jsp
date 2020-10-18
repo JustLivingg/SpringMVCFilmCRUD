@@ -10,7 +10,7 @@
 
 <body>
 	<c:choose>
-		<c:when test="${! empty films}">
+		<c:when test="${! empty film}">
 			<ul>
 				<li><strong>Film ID:</strong> ${film.id}</li>
 				<li><strong>Title:</strong> ${film.title}</li>
@@ -22,7 +22,7 @@
 				<li><strong>Film Duration:</strong> ${film.length}</li>
 				<li><strong>Replacement Cost:</strong> ${film.replacementCost}</li>
 				<li><strong>Rating:</strong> ${film.rating}</li>
-				<li><strong>Special Features:</strong> ${film.speicalFeatures}</li>
+				<li><strong>Special Features:</strong> ${film.specialFeatures}</li>
 			</ul>
 		</c:when>
 		<c:otherwise>

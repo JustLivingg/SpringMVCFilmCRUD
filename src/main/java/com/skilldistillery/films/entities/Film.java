@@ -1,8 +1,8 @@
-package com.skilldistillery.film.entities;
+package com.skilldistillery.films.entities;
 import java.util.List;
 
-import com.skilldistillery.mvcfilmsite.database.DatabaseAccessor;
-import com.skilldistillery.mvcfilmsite.database.DatabaseAccessorObject;
+import com.skilldistillery.films.database.DatabaseAccessor;
+import com.skilldistillery.films.database.DatabaseAccessorObject;
 
 public class Film {
 	private int id;
@@ -77,7 +77,7 @@ public class Film {
 		return releaseYear;
 	}
 
-	public void setReleaseYear(short releaseYear) {
+	public void setReleaseYear(int releaseYear) {
 		this.releaseYear = releaseYear;
 	}
 

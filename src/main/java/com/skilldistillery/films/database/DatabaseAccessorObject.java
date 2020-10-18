@@ -1,5 +1,5 @@
 
-package com.skilldistillery.mvcfilmsite.database;
+package com.skilldistillery.films.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,8 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.skilldistillery.film.entities.Actor;
-import com.skilldistillery.film.entities.Film;
+import com.skilldistillery.films.entities.Actor;
+import com.skilldistillery.films.entities.Film;
 
 public class DatabaseAccessorObject implements DatabaseAccessor {
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
@@ -281,7 +281,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public boolean updateFilm(Film film, String column, String columnValue) {
 		Connection conn = null;
-
+		if (column.equals("id")) {
+			return false;
+		}
+		else {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
@@ -303,6 +306,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		} catch (SQLException sqle) {
 			// TODO Auto-generated catch block
 			sqle.printStackTrace();
+		}
 		}
 		if (conn != null) {
 			try {

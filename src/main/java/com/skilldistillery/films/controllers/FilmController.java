@@ -55,7 +55,7 @@ public class FilmController {
 		List<Film> f = null;
 		f = memoryDAO.findFilmsBySearch(text);
 		mv.addObject("film", f);
-		mv.setViewName("/WEB-INF/filminfo.jsp");
+		mv.setViewName("/WEB-INF/searchFilm.jsp");
 		return mv;
 	}
 	

@@ -31,12 +31,7 @@
 			<option value="French">French</option>
 			<option value="German">German</option>
 			</select>
-			<!-- <input type="radio" id="lang1" name="lang" value="English"> English
-			<input type="radio" id="lang2" name="lang" value="Italian"> Italian
-			<input type="radio" id="lang3" name="lang" value="Japanese"> Japanese
-		<input type="radio" id="lang4" name="lang" value="Mandarin"> Mandarin
-		<input type="radio" id="lang5" name="lang" value="French"> French
-		<input type="radio" id="lang6" name="lang" value="German"> German -->
+			
 		<br>
 		<br> <label for="description"><strong>Enter film description</strong></label><br>
 		<textarea id="description" name="description" rows="3" cols="50"></textarea>
@@ -50,8 +45,15 @@
 		 <br>
 		 <br>
 		 <label for="length"><strong>Enter film length in minutes:</strong></label><br>
-		 <input type="text" id="length" name="length"><br>
-		 
+		 <input type="number" id="length" name="length"><br>
+		 <br>
+		 <label for="releaseYear"><strong>Enter release year:</strong></label><br>
+		 <input type="number" id="releaseYear" name="releaseYear"><br>
+		 <br>
+		 	<label for="specialFeatures"><strong>Enter special features:</strong></label><br> 
+			<textarea id="specialFeatures" name="specialFeatures" rows="1" cols="50"></textarea><br> 
+		 	<label for="rentalRate"><strong>Enter rental rate:</strong></label><br> 
+			<input type="number" min="1" step="0.01"/><br> 
 		 
 		 <br>
 		 <br>
@@ -59,4 +61,9 @@
 		<input type="submit" value="Add Film to Database">
 
 </form>
+<<<<<<< HEAD
 
+=======
+</body>
+</html>
+>>>>>>> bf675fa93e3591de9295478c282b218be148e465

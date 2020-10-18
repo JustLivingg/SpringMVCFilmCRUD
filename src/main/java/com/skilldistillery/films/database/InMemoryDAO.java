@@ -82,11 +82,7 @@ public class InMemoryDAO implements DatabaseAccessor{
 //		film.setId(id);
 //		Film f = film;
 		films.add(film);
-<<<<<<< HEAD
-		return film;
-=======
 
->>>>>>> 50acd4e41e6a8d55e1ff12a457b4660ee076fc26
 	}
 
 	@Override

@@ -10,24 +10,23 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.skilldistillery.films.database.InMemoryDAO;
-import com.skilldistillery.films.entities.Actor;
+import com.skilldistillery.films.database.DatabaseAccessor;
 import com.skilldistillery.films.entities.Film;
 
 @Controller
 public class FilmController {
 	
 	@Autowired
-//	private DatabaseAccessorObject filmDAO;
-//	
-//	public void setFilmDAO(DatabaseAccessorObject filmDAO) {
-//		this.filmDAO = filmDAO;
-//	}
-	public InMemoryDAO memoryDAO;
+	private DatabaseAccessor filmDAO;
 	
-	public void setMemoryDAO(InMemoryDAO memoryDAO) {
-		this.memoryDAO = memoryDAO;
+	public void setFilmDAO(DatabaseAccessor filmDAO) {
+		this.filmDAO = filmDAO;
 	}
+//	public InMemoryDAO memoryDAO;
+//	
+//	public void setMemoryDAO(InMemoryDAO memoryDAO) {
+//		this.memoryDAO = memoryDAO;
+//	}
 	
 	@RequestMapping(path="index.do", method=RequestMethod.GET)
 	  public ModelAndView index() {
@@ -41,7 +40,7 @@ public class FilmController {
 		ModelAndView mv = new ModelAndView();
 		Film f;
 		try {
-			f = memoryDAO.findFilmById(filmId);
+			f = filmDAO.findFilmById(filmId);
 			mv.addObject("film", f);
 			mv.setViewName("/WEB-INF/filminfo.jsp");
 		} catch (SQLException e) {
@@ -54,7 +53,7 @@ public class FilmController {
 	public ModelAndView findFilmBySearch(@RequestParam("keyword") String text ) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> f = null;
-		f = memoryDAO.findFilmsBySearch(text);
+		f = filmDAO.findFilmsBySearch(text);
 		mv.addObject("film", f);
 		mv.setViewName("/WEB-INF/searchFilm.jsp");
 		return mv;
@@ -62,7 +61,7 @@ public class FilmController {
 	
 	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
 	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
-		memoryDAO.createFilm(film);
+		filmDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
 		redir.addFlashAttribute("film", film);
 		mv.setViewName("redirect:filmCreated.do");
@@ -79,14 +78,16 @@ public class FilmController {
 	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
 	public ModelAndView deleteFilm(@RequestParam("id") Integer filmId, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
-		Film f;
+		Film f = new Film();
+		Boolean deleted = false;
 		try {
-			f = memoryDAO.findFilmById(filmId);
-			Boolean deleted = memoryDAO.deleteFilm(f);
+			f = filmDAO.findFilmById(filmId);
+			deleted = filmDAO.deleteFilm(f);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		redir.addFlashAttribute("redirect:filmDeleted.do");
+		redir.addFlashAttribute("film", f);
+		mv.setViewName("redirect:filmDeleted.do");
 		return mv;
 	}
 	

@@ -189,7 +189,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 
 	@Override
-	public void createFilm(Film film) {
+	public Film createFilm(Film film) {
 		Connection conn = null;
 
 		try {
@@ -242,7 +242,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			}
 			throw new RuntimeException("Error inserting actor " + film);
 		}
-//		return film;
+		return film;
 	}
 
 	@Override

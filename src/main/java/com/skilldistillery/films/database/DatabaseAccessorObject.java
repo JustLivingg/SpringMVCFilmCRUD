@@ -1,5 +1,5 @@
 
-package com.skilldistillery.mvcfilmsite.database;
+package com.skilldistillery.films.database;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -10,8 +10,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.skilldistillery.film.entities.Actor;
-import com.skilldistillery.film.entities.Film;
+import com.skilldistillery.films.entities.Actor;
+import com.skilldistillery.films.entities.Film;
 
 public class DatabaseAccessorObject implements DatabaseAccessor {
 	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
@@ -32,12 +32,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		Connection conn = DriverManager.getConnection(URL, user, pass);
 
-		String sql = "SELECT film.id as id, title, description, release_year, language_id,"
-				+ " language.name as film_language, rental_duration, rental_rate, length, replacement_cost,"
-				+ " rating, special_features, category.name as film_category" + " " + " FROM film"
-				+ " JOIN language on film.language_id = language.id"
-				+ " JOIN film_category on film.id = film_category.film_id"
-				+ " JOIN category on film_category.category_id = category.id" + " " + " WHERE film.id = ?";
+		String sql = "SELECT * FROM film LEFT JOIN language ON language.id = film.language_id  LEFT JOIN film_category ON film_category.film_id = film.id LEFT JOIN category ON category.id = film_category.category_id WHERE film.id =?";
 
 		PreparedStatement stmt = conn.prepareStatement(sql);
 
@@ -275,7 +270,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				try {
 					conn.rollback();
 				} catch (SQLException sqle2) {
-					System.err.println("Error trying to rollback");
+					System.err.println("Error trying to rollback delete film");
 				}
 			}
 			return false;
@@ -286,7 +281,10 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	@Override
 	public boolean updateFilm(Film film, String column, String columnValue) {
 		Connection conn = null;
-
+		if (column.equals("id")) {
+			return false;
+		}
+		else {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false); // START TRANSACTION
@@ -309,11 +307,12 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			// TODO Auto-generated catch block
 			sqle.printStackTrace();
 		}
+		}
 		if (conn != null) {
 			try {
 				conn.rollback();
 			} catch (SQLException sqle) {
-				System.err.print("Error trying toll rollback.");
+				System.err.print("Error trying to rollback update film.");
 			}
 		}
 

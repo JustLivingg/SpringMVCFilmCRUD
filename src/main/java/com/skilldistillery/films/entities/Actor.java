@@ -1,6 +1,5 @@
-package com.skilldistillery.film.entities;
+package com.skilldistillery.films.entities;
 
-import java.util.List;
 
 
 public class Actor {

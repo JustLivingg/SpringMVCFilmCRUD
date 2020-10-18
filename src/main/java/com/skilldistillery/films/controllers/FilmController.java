@@ -50,7 +50,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path = "findFilmBySearch.do", method = RequestMethod.GET)
-	public ModelAndView findFilmByKeyword(@RequestParam("text") String text ) {
+	public ModelAndView findFilmBySearch(@RequestParam("text") String text ) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> f = null;
 		f = memoryDAO.findFilmsBySearch(text);
@@ -59,11 +59,11 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
+	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.GET)
 	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
 		memoryDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("redirect:filmCreated.do");
+		redir.addFlashAttribute("/WEB-INF/createFilm.jsp");
 		return mv;
 	}
 	
@@ -74,7 +74,7 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="deleteFilm", method=RequestMethod.POST)
+	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
 	public ModelAndView deleteFilm(@RequestParam("id") Integer filmId, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
 		Film f;

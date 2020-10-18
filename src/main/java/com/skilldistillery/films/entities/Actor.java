@@ -1,10 +1,6 @@
 package com.skilldistillery.films.entities;
 
-<<<<<<< HEAD
-=======
-import java.util.List;
 
->>>>>>> 2f4681e7d5475d14d76ade941c97f146d6706c49
 
 public class Actor {
 	private int id;

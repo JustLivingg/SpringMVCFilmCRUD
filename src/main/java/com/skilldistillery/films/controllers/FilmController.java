@@ -59,11 +59,11 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.GET)
+	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
 	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
 		memoryDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("/WEB-INF/createFilm.jsp");
+		redir.addFlashAttribute("filmCreated.do");
 		return mv;
 	}
 	

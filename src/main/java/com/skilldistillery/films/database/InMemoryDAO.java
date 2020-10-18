@@ -68,7 +68,7 @@ public class InMemoryDAO implements DatabaseAccessor{
 	public List<Film> findFilmsBySearch(String inputText) {
 		List<Film> f = new ArrayList<>();
 		for(Film film : films) {
-			if(film.getTitle().contains(inputText) || film.getDescription().contains(inputText)) {
+			if(film.getTitle().toLowerCase().contains(inputText.toLowerCase()) || film.getDescription().toLowerCase().contains(inputText.toLowerCase())) {
 				f.add(film);
 			}
 		}

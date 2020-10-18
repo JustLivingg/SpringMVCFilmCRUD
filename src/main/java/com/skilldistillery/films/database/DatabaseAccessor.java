@@ -15,7 +15,7 @@ public interface DatabaseAccessor {
   //Added databaseAccessor for films by searching.
   public List<Film> findFilmsBySearch(String inputText);
   
-  public void createFilm(Film film);
+  public Film createFilm(Film film);
   
   public boolean deleteFilm(Film film);
   

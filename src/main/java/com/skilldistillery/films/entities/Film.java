@@ -31,8 +31,12 @@ public class Film {
 		this.cast = cast;
 	}
 
+	public Film() {
+		
+	}
+	
 	public Film(int id, String title, String description, int releaseYear, int languageId, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String rating, String specialfeatures, List<Actor> cast) {
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures, List<Actor> cast) {
 		super();
 		this.id = id;
 		this.title = title;
@@ -44,7 +48,7 @@ public class Film {
 		this.length = length;
 		this.replacementCost = replacementCost;
 		this.rating = rating;
-		this.specialFeatures = specialfeatures;
+		this.specialFeatures = specialFeatures;
 		this.cast = cast;
 	}
 

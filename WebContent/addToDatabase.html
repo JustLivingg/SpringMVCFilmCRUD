@@ -5,14 +5,12 @@
 <title>addToDatabase</title>
 </head>
 <body>
-
 	<h3>Enter A New Film Below</h3>
 	<br>
 	<form action="addFilmToDatabase.do" method="POST">
 		<label for="title"><strong>Enter film title:</strong></label><br> 
 			<textarea id="title" name="title" rows="1" cols="30"></textarea><br> 
 
-			
 			<label
 			for="rating"><strong>Select film rating:</strong></label><br> 
 			<input type="radio" id="G" name="rating" value="G"> G 
@@ -37,12 +35,20 @@
 		<textarea id="description" name="description" rows="3" cols="50"></textarea>
 		<br> 
 		<br>
-		<label for="actors"><strong>Enter actors:</strong></label><br>
-		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea><br>
-		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea><br>
-		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea><br>
-		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea><br>
-		 <br>
+		<div><h3>Enter film actors</h3>
+		<label for="actorFirstName"><strong>Enter first name:</strong></label><br>
+		<input type="text" id="actorFirstName" name="FirstName"><br>
+		<label for="actorLastName"><strong>Enter last name:</strong></label><br>
+		<input type="text" id="actorLastName" name="LastName"><br>
+		<label for="actorFirstName"><strong>Enter first name:</strong></label><br>
+		<input type="text" id="actorFirstName" name="FirstName"><br>
+		<label for="actorLastName"><strong>Enter last name:</strong></label><br>
+		<input type="text" id="actorLastName" name="LastName"><br>
+		<label for="actorFirstName"><strong>Enter first name:</strong></label><br>
+		<input type="text" id="actorFirstName" name="FirstName"><br>
+		<label for="actorLastName"><strong>Enter last name:</strong></label><br>
+		<input type="text" id="actorLastName" name="LastName"><br>
+		</div>
 		 <br>
 		 <label for="length"><strong>Enter film length in minutes:</strong></label><br>
 		 <input type="number" id="length" name="length"><br>
@@ -52,6 +58,7 @@
 		 <br>
 		 	<label for="specialFeatures"><strong>Enter special features:</strong></label><br> 
 			<textarea id="specialFeatures" name="specialFeatures" rows="1" cols="50"></textarea><br> 
+		 	<br>
 		 	<label for="rentalRate"><strong>Enter rental rate:</strong></label><br> 
 			<input type="number" min="1" step="0.01" name=rentalRate/><br> 
 			<br>
@@ -62,13 +69,6 @@
 						<input type="number" min="1" step="any" name=rentalDuration/><br> 
 		 <br>
 		 <br>
-
 		<input type="submit" value="Add Film to Database">
-
-</form>
-<<<<<<< HEAD
-
-=======
 </body>
 </html>
->>>>>>> bf675fa93e3591de9295478c282b218be148e465

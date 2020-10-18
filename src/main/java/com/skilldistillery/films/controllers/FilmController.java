@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.films.database.InMemoryDAO;
+import com.skilldistillery.films.entities.Actor;
 import com.skilldistillery.films.entities.Film;
 
 @Controller
@@ -63,7 +64,8 @@ public class FilmController {
 	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
 		memoryDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("filmCreated.do");
+		redir.addFlashAttribute("film", film);
+		mv.setViewName("redirect:filmCreated.do");
 		return mv;
 	}
 	

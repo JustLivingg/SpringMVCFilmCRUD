@@ -61,31 +61,25 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
-	public ModelAndView addFilm(@RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("") int releaseYear, int languageId, int rentalDuration,
-			double rentalRate, int length, double replacementCost, String rating, String specialFeatures, List<Actor> cast, RedirectAttributes redir) {
-		int id = 0;
-		if(releaseYear == 0) {
-			releaseYear = 9999;
-		}
-		if(languageId == 0) {
-			languageId = 1;
-		}
-		if(rentalDuration == 0) {
-			rentalDuration = 3;
-		}
-		if(rentalRate == 0) {
-			rentalRate = 4.99;
-		}
-		if(replacementCost == 0) {
-			replacementCost = 19.99;
-		}
-		if(rating == null) {
-			rating = "G";
-		}
-		Film film = new Film(id, title, description, releaseYear, languageId, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures, cast);
+	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
+//			@RequestParam("title") String title, 
+//			@RequestParam(name = "description", required = false) String description, 
+//			@RequestParam(name = "releaseYear", defaultValue = "0") int releaseYear, 
+//			@RequestParam(name = "language", defaultValue = "1") int languageId, 
+//			@RequestParam(name = "rentalDuration", defaultValue = "3") int rentalDuration,
+//			@RequestParam(name = "rentalRate", defaultValue = "3.99") double rentalRate, 
+//			@RequestParam("length") int length, 
+//			@RequestParam(name = "replacementCost", defaultValue = "19.99") double replacementCost, 
+//			@RequestParam(name = "rating", defaultValue = "G") String rating, 
+//			@RequestParam("specialFeatures") String specialFeatures, 
+//			@RequestParam("actors") List<Actor> cast, RedirectAttributes redir) {
+		
+//		int id = 0;
+//		Film film = new Film(id, title, description, releaseYear, languageId, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures, cast);
 		memoryDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("filmCreated.do");
+		redir.addFlashAttribute("film", film);
+		mv.setViewName("redirect:filmCreated.do");
 		return mv;
 	}
 	

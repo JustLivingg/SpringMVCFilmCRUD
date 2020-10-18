@@ -77,12 +77,12 @@ public class InMemoryDAO implements DatabaseAccessor{
 	}
 
 	@Override
-	public Film createFilm(Film film) {
-		id ++;
-		film.setId(id);
-		Film f = film;
-		films.add(f);
-		return null;
+	public void createFilm(Film film) {
+//		id ++;
+//		film.setId(id);
+//		Film f = film;
+		films.add(film);
+
 	}
 
 	@Override

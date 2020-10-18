@@ -62,20 +62,6 @@ public class FilmController {
 	
 	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
 	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
-//			@RequestParam("title") String title, 
-//			@RequestParam(name = "description", required = false) String description, 
-//			@RequestParam(name = "releaseYear", defaultValue = "0") int releaseYear, 
-//			@RequestParam(name = "language", defaultValue = "1") int languageId, 
-//			@RequestParam(name = "rentalDuration", defaultValue = "3") int rentalDuration,
-//			@RequestParam(name = "rentalRate", defaultValue = "3.99") double rentalRate, 
-//			@RequestParam("length") int length, 
-//			@RequestParam(name = "replacementCost", defaultValue = "19.99") double replacementCost, 
-//			@RequestParam(name = "rating", defaultValue = "G") String rating, 
-//			@RequestParam("specialFeatures") String specialFeatures, 
-//			@RequestParam("actors") List<Actor> cast, RedirectAttributes redir) {
-		
-//		int id = 0;
-//		Film film = new Film(id, title, description, releaseYear, languageId, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures, cast);
 		memoryDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
 		redir.addFlashAttribute("film", film);

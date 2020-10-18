@@ -1,5 +1,6 @@
 package com.skilldistillery.films.controllers;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.films.database.DatabaseAccessor;
+import com.skilldistillery.films.entities.Actor;
 import com.skilldistillery.films.entities.Film;
 
 @Controller
@@ -60,10 +61,10 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
-	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
-		filmDAO.createFilm(film);
+	public ModelAndView addFilm(Film film) {
+		Film f = filmDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("film", film);
+		mv.addObject(f);
 		mv.setViewName("redirect:filmCreated.do");
 		return mv;
 	}
@@ -76,7 +77,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
-	public ModelAndView deleteFilm(@RequestParam("id") Integer filmId, RedirectAttributes redir) {
+	public ModelAndView deleteFilm(@RequestParam("id") Integer filmId) {
 		ModelAndView mv = new ModelAndView();
 		Film f = new Film();
 		Boolean deleted = false;
@@ -86,7 +87,6 @@ public class FilmController {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		redir.addFlashAttribute("film", f);
 		mv.setViewName("redirect:filmDeleted.do");
 		return mv;
 	}

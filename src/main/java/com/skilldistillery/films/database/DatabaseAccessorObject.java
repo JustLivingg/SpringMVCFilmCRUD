@@ -215,22 +215,14 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				if (keys.next()) {
 					int newFilmId = keys.getInt(1);
 					film.setId(newFilmId);
-					if (film.getCast() != null && film.getCast().size() > 0) {
-						sql = "INSERT INTO film_actor (film_id, actor_id)" + "VALUES (?,?)";
-						stmt = conn.prepareStatement(sql);
-						for (Actor actor : film.getCast()) {
-							stmt.setInt(1, newFilmId);
-							stmt.setInt(2, actor.getId());
-							updateCount = stmt.executeUpdate();
-						}
-					}
+
+				} else {
+					film = null;
 				}
-			} else {
-				film = null;
+				conn.commit(); // COMMIT TRANSACTION
+				stmt.close();
+				conn.close();
 			}
-			conn.commit(); // COMMIT TRANSACTION
-			stmt.close();
-			conn.close();
 		} catch (SQLException sqle) {
 			sqle.printStackTrace();
 			if (conn != null) {
@@ -240,7 +232,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 					System.err.println("Error trying to rollback");
 				}
 			}
-			throw new RuntimeException("Error inserting actor " + film);
 		}
 		return film;
 	}
@@ -283,30 +274,29 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		Connection conn = null;
 		if (column.equals("id")) {
 			return false;
-		}
-		else {
-		try {
-			conn = DriverManager.getConnection(URL, user, pass);
-			conn.setAutoCommit(false); // START TRANSACTION
+		} else {
+			try {
+				conn = DriverManager.getConnection(URL, user, pass);
+				conn.setAutoCommit(false); // START TRANSACTION
 
-			String sql = "UPDATE FILM SET column = columnValue " + "WHERE id = ?";
+				String sql = "UPDATE FILM SET column = columnValue " + "WHERE id = ?";
 
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, film.getId());
+				PreparedStatement stmt = conn.prepareStatement(sql);
+				stmt.setInt(1, film.getId());
 
-			int updateCount = stmt.executeUpdate();
+				int updateCount = stmt.executeUpdate();
 
-			if (updateCount == 0) {
-				return false;
+				if (updateCount == 0) {
+					return false;
+				}
+
+				conn.commit();
+				stmt.close();
+				conn.close();
+			} catch (SQLException sqle) {
+				// TODO Auto-generated catch block
+				sqle.printStackTrace();
 			}
-
-			conn.commit();
-			stmt.close();
-			conn.close();
-		} catch (SQLException sqle) {
-			// TODO Auto-generated catch block
-			sqle.printStackTrace();
-		}
 		}
 		if (conn != null) {
 			try {

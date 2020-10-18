@@ -11,6 +11,7 @@ public class InMemoryDAO implements DatabaseAccessor{
 	
 	private List<Film> films;
 	private List<Actor> actors;
+	private int id = 4;
 	
 	public InMemoryDAO() {
 		films = new ArrayList<>();
@@ -77,7 +78,10 @@ public class InMemoryDAO implements DatabaseAccessor{
 
 	@Override
 	public Film createFilm(Film film) {
-		films.add(film);
+		id ++;
+		film.setId(id);
+		Film f = film;
+		films.add(f);
 		return null;
 	}
 

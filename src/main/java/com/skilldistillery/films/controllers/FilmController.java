@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.films.database.InMemoryDAO;
+import com.skilldistillery.films.entities.Actor;
 import com.skilldistillery.films.entities.Film;
 
 @Controller
@@ -60,7 +61,28 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
-	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
+	public ModelAndView addFilm(@RequestParam("title") String title, @RequestParam("description") String description, @RequestParam("") int releaseYear, int languageId, int rentalDuration,
+			double rentalRate, int length, double replacementCost, String rating, String specialFeatures, List<Actor> cast, RedirectAttributes redir) {
+		int id = 0;
+		if(releaseYear == 0) {
+			releaseYear = 9999;
+		}
+		if(languageId == 0) {
+			languageId = 1;
+		}
+		if(rentalDuration == 0) {
+			rentalDuration = 3;
+		}
+		if(rentalRate == 0) {
+			rentalRate = 4.99;
+		}
+		if(replacementCost == 0) {
+			replacementCost = 19.99;
+		}
+		if(rating == null) {
+			rating = "G";
+		}
+		Film film = new Film(id, title, description, releaseYear, languageId, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures, cast);
 		memoryDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
 		redir.addFlashAttribute("filmCreated.do");

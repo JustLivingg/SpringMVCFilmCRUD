@@ -70,3 +70,6 @@ When a film's details are displayed, its actors and categories are also listed.
 
 Justin - update jsp
 Jeanne - update controller to show categories and details
+
+# Stretch, stretch goals.
+- Create menu in each HTML instead of using back arrow.

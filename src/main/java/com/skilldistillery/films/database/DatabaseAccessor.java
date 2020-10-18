@@ -1,10 +1,10 @@
-package com.skilldistillery.mvcfilmsite.database;
+package com.skilldistillery.films.database;
 
 import java.sql.SQLException;
 import java.util.List;
 
-import com.skilldistillery.film.entities.Actor;
-import com.skilldistillery.film.entities.Film;
+import com.skilldistillery.films.entities.Actor;
+import com.skilldistillery.films.entities.Film;
 
 public interface DatabaseAccessor {
   public Film findFilmById(int filmId) throws SQLException;

@@ -2,10 +2,6 @@
 <project-modules id="moduleCoreId" project-version="1.5.0">
 	<wb-module deploy-name="MVCFilmSite">
 		<property name="context-root" value="MVCFilmSite"/>
-<<<<<<< HEAD
-		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/resources"/>
-=======
->>>>>>> b3359977232be8778ebd5aba4e4e690276db3c26
 		<wb-resource deploy-path="/WEB-INF/classes" source-path="src/main/java"/>
 		<wb-resource deploy-path="/" source-path="WebContent"/>
 	</wb-module>

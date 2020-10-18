@@ -50,7 +50,7 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path = "findFilmBySearch.do", method = RequestMethod.GET)
-	public ModelAndView findFilmBySearch(@RequestParam("text") String text ) {
+	public ModelAndView findFilmBySearch(@RequestParam("keyword") String text ) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> f = null;
 		f = memoryDAO.findFilmsBySearch(text);

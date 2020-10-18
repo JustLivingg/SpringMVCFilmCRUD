@@ -9,6 +9,8 @@
 <title>Film Search:</title>
 </head>
 <body>
+
+
 	<c:choose>
 		<c:when test="${! empty film}">
 			<c:forEach items="${film}" var="film">

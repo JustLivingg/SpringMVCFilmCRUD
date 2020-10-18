@@ -5,11 +5,20 @@
 <title>addToDatabase</title>
 </head>
 <body>
+<<<<<<< HEAD
+HEAD:WebContent/WEB-INF/addToDatabase.html
+	<h3>Enter A New Film Below</h3>
+	<br>
+	<form action="AddToDatabase.do" method="POST">
+		<label for="title"><strong>Enter film title: (*Required)</strong></label><br> 
+			<textarea id="title" name="title" rows="1" cols="30" required></textarea><br> 
+=======
 	<h3>Enter A New Film Below</h3>
 	<br>
 	<form action="addFilmToDatabase.do" method="POST">
 		<label for="title"><strong>Enter film title:</strong></label><br> 
 			<textarea id="title" name="title" rows="1" cols="30"></textarea><br> 
+>>>>>>> 3d3fae11fc04e87aeff0e62465e18d492e21e868
 			
 			<label
 			for="rating"><strong>Select film rating:</strong></label><br> 
@@ -18,31 +27,56 @@
 			name="rating" value="PG-13"> PG-13 <input type="radio" id="R"
 			name="rating" value="R">R <input type="radio" id="NC-17"
 			name="rating" value="NC-17"> NC-17<br> 
-			
-			<label for="language"><strong>Enter film language:</strong></label><br> 
-			<input type="checkbox" id="lang1" name="lang1" value="English"> English
-			<input type="checkbox" id="lang2" name="lang2" value="Italian"> Italian
-			<input type="checkbox" id="lang3" name="lang3" value="Japanese"> Japanese
-		<input type="checkbox" id="lang4" name="lang4" value="Mandarin"> Mandarin
-		<input type="checkbox" id="lang5" name="lang5" value="French"> French
-		<input type="checkbox" id="lang6" name="lang6" value="German"> German
-		
+			<br>
+			<label for="language"><strong>Enter film language: (*Required)</strong></label><br> 
+			<select name="language" id="language-select" required>
+			<option value=" ">Please choose an option</option>
+			<option value="English">English</option>
+			<option value="Italian">Italian</option>
+			<option value="Japanese">Japanese</option>
+			<option value="Mandarin">Mandarin</option>
+			<option value="French">French</option>
+			<option value="German">German</option>
+			</select>
+			<!-- <input type="radio" id="lang1" name="lang" value="English"> English
+			<input type="radio" id="lang2" name="lang" value="Italian"> Italian
+			<input type="radio" id="lang3" name="lang" value="Japanese"> Japanese
+		<input type="radio" id="lang4" name="lang" value="Mandarin"> Mandarin
+		<input type="radio" id="lang5" name="lang" value="French"> French
+		<input type="radio" id="lang6" name="lang" value="German"> German -->
+		<br>
 		<br> <label for="description"><strong>Enter film description</strong></label><br>
 		<textarea id="description" name="description" rows="3" cols="50"></textarea>
 		<br> 
+		<br>
 		<label for="actors"><strong>Enter actors:</strong></label><br>
-		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea>
-		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea>
-		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea>
-		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea>
+		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea><br>
+		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea><br>
+		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea><br>
+		 <textarea id="actors" name="actors" rows="1" cols="40"></textarea><br>
 		 <br>
-		 
-		 <label for="length"><strong>Enter film length:</strong></label><br>
+		 <br>
+		 <label for="length"><strong>Enter film length in minutes:</strong></label><br>
 		 <input type="text" id="length" name="length"><br>
 		 
 		 
 		 <br>
 		 <br>
+<<<<<<< HEAD
+		<input type="submit" value="Add Film to Database">
+
+</form>
+
+<!-- <h3>Add A Film to the Database:</h3>
+	<form action="addFilmToDatabase.do" method="GET">
+		Abbreviation:
+		<input type="text" name="film" size="4"/> 
+		<input type="submit" value="Add Film to Database" /> 
+>>>>>>> 4e22c57f10d0ff7ea37b85dfac77ff51401518d0:WebContent/addToDatabase.html
+
+
+=======
 		<input type="submit">
+>>>>>>> 3d3fae11fc04e87aeff0e62465e18d492e21e868
 </body>
 </html>

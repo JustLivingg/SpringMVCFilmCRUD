@@ -35,20 +35,8 @@
 		<textarea id="description" name="description" rows="3" cols="50"></textarea>
 		<br> 
 		<br>
-		<div><h3>Enter film actors</h3>
-		<label for="actorFirstName"><strong>Enter first name:</strong></label><br>
-		<input type="text" id="actorFirstName" name="FirstName"><br>
-		<label for="actorLastName"><strong>Enter last name:</strong></label><br>
-		<input type="text" id="actorLastName" name="LastName"><br>
-		<label for="actorFirstName"><strong>Enter first name:</strong></label><br>
-		<input type="text" id="actorFirstName" name="FirstName"><br>
-		<label for="actorLastName"><strong>Enter last name:</strong></label><br>
-		<input type="text" id="actorLastName" name="LastName"><br>
-		<label for="actorFirstName"><strong>Enter first name:</strong></label><br>
-		<input type="text" id="actorFirstName" name="FirstName"><br>
-		<label for="actorLastName"><strong>Enter last name:</strong></label><br>
-		<input type="text" id="actorLastName" name="LastName"><br>
-		</div>
+		<strong>Enter actor by ID number:</strong>
+		<input type="number" id="actorId" name="actorId"><br>
 		 <br>
 		 <label for="length"><strong>Enter film length in minutes:</strong></label><br>
 		 <input type="number" id="length" name="length"><br>
@@ -69,6 +57,9 @@
 						<input type="number" min="1" step="any" name=rentalDuration/><br> 
 		 <br>
 		 <br>
-		<input type="submit" value="Add Film to Database">
+		<input type="submit" value="Add Film to Database"><br>
+		</form>
+		<br>
+		<button type="button" onclick="document.location='index.html'">Return to Main Menu</button>
 </body>
 </html>

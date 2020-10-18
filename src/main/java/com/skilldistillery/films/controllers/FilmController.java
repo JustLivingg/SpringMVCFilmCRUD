@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.skilldistillery.films.database.DatabaseAccessorObject;
 import com.skilldistillery.films.database.InMemoryDAO;
 import com.skilldistillery.films.entities.Film;
 
@@ -59,9 +59,39 @@ public class FilmController {
 		return mv;
 	}
 	
+	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
+	public ModelAndView addFilm(Film film, RedirectAttributes redir) {
+		memoryDAO.createFilm(film);
+		ModelAndView mv = new ModelAndView();
+		redir.addFlashAttribute("redirect:filmCreated.do");
+		return mv;
+	}
 	
+	@RequestMapping(path="filmCreated.do", method=RequestMethod.GET)
+	public ModelAndView created() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/WEB-INF/filminfo.jsp");
+		return mv;
+	}
 	
+	@RequestMapping(path="deleteFilm", method=RequestMethod.POST)
+	public ModelAndView deleteFilm(@RequestParam("id") Integer filmId, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		Film f;
+		try {
+			f = memoryDAO.findFilmById(filmId);
+			Boolean deleted = memoryDAO.deleteFilm(f);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		redir.addFlashAttribute("redirect:filmDeleted.do");
+		return mv;
+	}
 	
-	
-	
+	@RequestMapping(path="filmDeleted.do", method=RequestMethod.GET)
+	public ModelAndView deleted() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("/WEB-INF/filmDeleted.jsp");
+		return mv;
+	}
 }

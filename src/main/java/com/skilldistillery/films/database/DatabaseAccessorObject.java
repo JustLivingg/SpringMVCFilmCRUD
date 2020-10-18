@@ -14,7 +14,7 @@ import com.skilldistillery.films.entities.Actor;
 import com.skilldistillery.films.entities.Film;
 
 public class DatabaseAccessorObject implements DatabaseAccessor {
-	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false";
+	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useJDBCCompliantTimeZoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
 	private static final String user = "student";
 	private static final String pass = "student";
 

@@ -22,12 +22,12 @@
 			<label for="language"><strong>Enter film language: (*Required)</strong></label><br> 
 			<select name="language" id="language-select" required>
 			<option value=" ">Please choose an option</option>
-			<option value="English">English</option>
-			<option value="Italian">Italian</option>
-			<option value="Japanese">Japanese</option>
-			<option value="Mandarin">Mandarin</option>
-			<option value="French">French</option>
-			<option value="German">German</option>
+			<option value="1">English</option>
+			<option value="2">Italian</option>
+			<option value="3">Japanese</option>
+			<option value="4">Mandarin</option>
+			<option value="5">French</option>
+			<option value="6">German</option>
 			</select>
 			
 		<br>
@@ -51,8 +51,13 @@
 		 	<label for="specialFeatures"><strong>Enter special features:</strong></label><br> 
 			<textarea id="specialFeatures" name="specialFeatures" rows="1" cols="50"></textarea><br> 
 		 	<label for="rentalRate"><strong>Enter rental rate:</strong></label><br> 
-			<input type="number" min="1" step="0.01"/><br> 
-		 
+			<input type="number" min="1" step="0.01" name=rentalRate/><br> 
+			<br>
+		 	<label for="replacementCost"><strong>Enter replacement cost:</strong></label><br> 
+			<input type="number" min="1" step="0.01" name=replacementCost/><br> 
+			<br>
+			<label for="rentalDuration"><strong>Enter rental duration:</strong></label><br>
+						<input type="number" min="1" step="any" name=rentalDuration/><br> 
 		 <br>
 		 <br>
 		<input type="submit" value="Add Film to Database">

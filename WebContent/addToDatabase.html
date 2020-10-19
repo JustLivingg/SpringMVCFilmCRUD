@@ -15,21 +15,21 @@
 			for="rating"><strong>Select film rating:</strong></label><br> 
 			<input type="radio" id="G" name="rating" value="G"> G 
 			<input type="radio" id="PG" name="rating" value="PG"> PG 
-			<input type="radio" id="PG-13"name="rating" value="PG-13"> PG-13 
+			<input type="radio" id="PG13"name="rating" value="PG13"> PG-13 
 			<input type="radio" id="R" name="rating" value="R">R 
-			<input type="radio" id="NC-17" name="rating" value="NC-17"> NC-17
+			<input type="radio" id="NC17" name="rating" value="NC17"> NC-17
 			<br> 
 			<br>
-			<label for="language"><strong>Enter film language: (*Required)</strong></label><br> 
-			<select name="language" id="language-select" required>
-			<option value=" ">Please choose an option</option>
-			<option value="1">English</option>
-			<option value="2">Italian</option>
-			<option value="3">Japanese</option>
-			<option value="4">Mandarin</option>
-			<option value="5">French</option>
-			<option value="6">German</option>
-			</select>
+			
+			
+			<label for="languageid"><strong>Enter film language: (*Required)</strong></label><br> 
+			<input type="radio" id="1" name="languageId" value="1"> English 
+			<input type="radio" id="2" name="languageId" value="2"> Italian 
+			<input type="radio" id="3" name="languageId" value="3"> Japanese
+			<input type="radio" id="4" name="languageId" value="4"> Mandarin
+			<input type="radio" id="5" name="languageId" value="5"> French
+			<input type="radio" id="6" name="languageId" value="6"> German
+	
 			
 		<br>
 		<br> <label for="description"><strong>Enter film description</strong></label><br>
@@ -49,13 +49,13 @@
 			<textarea id="specialFeatures" name="specialFeatures" rows="1" cols="50"></textarea><br>  -->
 		 	<br>
 		 	<label for="rentalRate"><strong>Enter rental rate:</strong></label><br> 
-			<input type="number" min="1" step="0.01" name=rentalRate/><br> 
+			<input type="number" min="1" step="0.01" id=rentalRate name=rentalRate/><br> 
 			<br>
 		 	<label for="replacementCost"><strong>Enter replacement cost:</strong></label><br> 
-			<input type="number" min="1" step="0.01" name=replacementCost/><br> 
+			<input type="number" min="1" step="0.01"id ="replacementCost" name=replacementCost/><br> 
 			<br>
 			<label for="rentalDuration"><strong>Enter rental duration:</strong></label><br>
-						<input type="number" min="1" step="any" name=rentalDuration/><br> 
+						<input type="number" min="1" id="rentalDuration" step="any" name=rentalDuration/><br> 
 		 <br>
 		 <br>
 		<input type="submit" value="Add Film to Database"><br>

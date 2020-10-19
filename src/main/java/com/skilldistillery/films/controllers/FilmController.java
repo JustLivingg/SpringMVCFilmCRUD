@@ -1,4 +1,5 @@
 package com.skilldistillery.films.controllers;
+
 import java.sql.SQLException;
 import java.util.List;
 
@@ -16,10 +17,10 @@ import com.skilldistillery.films.entities.Film;
 
 @Controller
 public class FilmController {
-	
+
 	@Autowired
 	private DatabaseAccessor filmDAO;
-	
+
 	public void setFilmDAO(DatabaseAccessor filmDAO) {
 		this.filmDAO = filmDAO;
 	}
@@ -28,14 +29,14 @@ public class FilmController {
 //	public void setMemoryDAO(InMemoryDAO memoryDAO) {
 //		this.memoryDAO = memoryDAO;
 //	}
-	
-	@RequestMapping(path="index.do", method=RequestMethod.GET)
-	  public ModelAndView index() {
-	    ModelAndView mv = new ModelAndView();
-	    mv.setViewName("index.html");
-	    return mv;
-	  }
-	
+
+	@RequestMapping(path = "index.do", method = RequestMethod.GET)
+	public ModelAndView index() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("index.html");
+		return mv;
+	}
+
 	@RequestMapping(path = "findFilmById.do", method = RequestMethod.GET)
 	public ModelAndView findFilmById(@RequestParam("id") Integer filmId) {
 		ModelAndView mv = new ModelAndView();
@@ -49,9 +50,9 @@ public class FilmController {
 		}
 		return mv;
 	}
-	
+
 	@RequestMapping(path = "findFilmBySearch.do", method = RequestMethod.GET)
-	public ModelAndView findFilmBySearch(@RequestParam("keyword") String text ) {
+	public ModelAndView findFilmBySearch(@RequestParam("keyword") String text) {
 		ModelAndView mv = new ModelAndView();
 		List<Film> f = null;
 		f = filmDAO.findFilmsBySearch(text);
@@ -59,17 +60,16 @@ public class FilmController {
 		mv.setViewName("/WEB-INF/searchFilm.jsp");
 		return mv;
 	}
-	
-	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
-	public ModelAndView addFilm(@Valid Film film)
-	{
+
+	@RequestMapping(path = "addFilmToDatabase.do", method = RequestMethod.POST)
+	public ModelAndView addFilm(@Valid Film film) {
 		Film f = filmDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("newFilm", f);
 		mv.setViewName("/WEB-INF/createFilm.jsp");
 		return mv;
 	}
-	
+
 //	@RequestMapping(path="filmCreated.do", method=RequestMethod.GET)
 //	public ModelAndView created(@Valid Film film) {
 //		Film f = filmDAO.createFilm(film);
@@ -78,8 +78,8 @@ public class FilmController {
 //		mv.setViewName("/WEB-INF/createFilm.jsp");
 //		return mv;
 //	}
-	
-	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
+
+	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
 	public ModelAndView deleteFilm(@RequestParam("id") Integer filmId) {
 		ModelAndView mv = new ModelAndView();
 		Film f = new Film();
@@ -93,11 +93,26 @@ public class FilmController {
 		mv.setViewName("redirect:filmDeleted.do");
 		return mv;
 	}
-	
-	@RequestMapping(path="filmDeleted.do", method=RequestMethod.GET)
+
+	@RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET)
 	public ModelAndView deleted() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/WEB-INF/filmDeleted.jsp");
 		return mv;
+	}
+
+	@RequestMapping(path = "editFilmForm.do", method = RequestMethod.GET, params = "id")
+	private ModelAndView getEditForm(@RequestParam("id") Integer filmId) {
+		ModelAndView mv = new ModelAndView();
+		Film f;
+		try {
+			f = filmDAO.findFilmById(filmId);
+			mv.addObject("film", f);
+			mv.setViewName("/WEB-INF/createFilm.jsp");
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return mv;
+
 	}
 }

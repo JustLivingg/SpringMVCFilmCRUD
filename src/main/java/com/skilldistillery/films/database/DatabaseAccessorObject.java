@@ -20,7 +20,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 	static {
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		}
@@ -187,7 +187,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 
 		return filmSearch;
 	}
-
+	
 	@Override
 	public Film createFilm(Film film) {
 		Connection conn = null;
@@ -195,8 +195,8 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		try {
 			conn = DriverManager.getConnection(URL, user, pass);
 			conn.setAutoCommit(false);
-			String sql = "INSERT INTO Film (Title, description, releaseYear, languageId, rentalDuration, rentalRate, length, replacementCost, rating, specialFeatures) "
-					+ "VALUES (?,?,?,?,?,?,?,?,?,?)";
+			String sql = "INSERT INTO Film (title, description, release_year, language_id, rental_duration, rental_rate, length, replacement_cost, rating, specialFeatures) VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+//			String sql = "INSERT INTO Film (title, language_id) VALUES (?,?)";
 			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 
 			stmt.setString(1, film.getTitle());
@@ -208,6 +208,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.setInt(7, film.getLength());
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
+			stmt.setString(10, film.getSpecialfeatures());
 
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {

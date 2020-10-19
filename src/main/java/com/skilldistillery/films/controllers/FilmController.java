@@ -1,6 +1,5 @@
 package com.skilldistillery.films.controllers;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.skilldistillery.films.database.DatabaseAccessor;
-import com.skilldistillery.films.entities.Actor;
 import com.skilldistillery.films.entities.Film;
 
 @Controller
@@ -61,7 +59,8 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
-	public ModelAndView addFilm(Film film) {
+	public ModelAndView addFilm(Film film)
+	{
 		Film f = filmDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject(f);

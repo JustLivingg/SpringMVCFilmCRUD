@@ -39,8 +39,8 @@ There is an error on mapping the JSP to the HTML film and getting the values of 
 *Spring Tool Suite
 
 ## Authors
-Justin Livingston
-Jeanne Wolcott
+Justin Livingston,
+Jeanne Wolcott,
 Ashley Davis
 
 

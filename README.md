@@ -18,7 +18,7 @@ This project allows the user to access a mySQL database of films.
 
 The user can enter a film and see details about that film in a web page.
 
-<img src=https://github.com/JustLivingg/SpringMVCFilmCRUD/issues/1#issue-724483678/>
+<img src="https://github.com/JustLivingg/SpringMVCFilmCRUD/issues/1#issue-724483678"/>
 
 The user can also add films to the database, edit existing records, and delete films they added from the database.
 

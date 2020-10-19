@@ -28,6 +28,10 @@
 				</ul>
 			</c:forEach>
 		</c:when>
+		
+			<c:otherwise>
+			<p>No film found with that search parameter.</p>
+		</c:otherwise>
 	</c:choose>
 
 	<br>
@@ -38,5 +42,6 @@
 			class="submit" type="submit" value="Delete Film" />
 	</form>
 	<br>
+	<button type="button" onclick="document.location='index.html'">Return to Main Menu</button>
 </body>
 </html>

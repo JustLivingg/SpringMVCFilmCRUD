@@ -39,7 +39,7 @@
 	</form>
 	<br>
 
-
+<button type="button" onclick="document.location='index.html'">Return to Main Menu</button>
 
 </body>
 </html>

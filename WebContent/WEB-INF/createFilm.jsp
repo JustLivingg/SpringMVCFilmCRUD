@@ -2,56 +2,44 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
-
-<title>Add New Film</title>
+<title>New Film Added</title>
 </head>
 
-<h1>Add A New Film</h1>
-<form:form action="addFilmToDatabase.do" method="POST" modelAttribute="film">
-		<form:label path="title">Title:</form:label><br>
-		<form:input class="input" path="title" required="required" placeholder="Enter Title"/>
-		<form:errors path="title" />
-		<br />
-		<form:label path="description" >Description:</form:label><br>
-		<form:input class="input" path="description" required="required" placeholder="Enter Description"/>
-		<form:errors path="description" />
-		<br />
+<body>
+	<c:choose>
+		<c:when test="${! empty newFilm}">
+			<ul>
+				<li><strong>Film ID:</strong> ${newFilm.id}</li>
+				<li><strong>Title:</strong> ${newFilm.title}</li>
+				<li><strong>Film Description:</strong> ${newFilm.description}</li>
+				<li><strong>Release Date:</strong> ${newFilm.releaseYear}</li>
+				<li><strong>Language ID:</strong> ${newFilm.languageId}</li>
+				<li><strong>Rental Duration:</strong> ${newFilm.rentalDuration}</li>
+				<li><strong>Rental Rate:</strong> ${newFilm.rentalRate}</li>
+				<li><strong>Film Duration:</strong> ${newFilm.length}</li>
+				<li><strong>Replacement Cost:</strong> ${newFilm.replacementCost}</li>
+				<li><strong>Rating:</strong> ${newFilm.rating}</li>
+			</ul>
+		</c:when>
+		<c:otherwise>
+			<p>No film found with that ID.</p>
+		</c:otherwise>
+	</c:choose>
 
-		<form:label path="releaseYear">Release Year:</form:label><br>
-		<form:input class="input" path="releaseYear" min="0" max="2029" type="number" required="required" placeholder="Year" />
-		<form:errors path="releaseYear" />
-		<br />
-		<form:label path="languageId">Language: </form:label><br>
-		<form:select path="languageId"> 
-			<form:option value="1" >English</form:option>
-		</form:select>
-		<br>
-		<form:label path="rentalDuration">Rental Duration:</form:label><br>
-		<form:input class="input" path="rentalDuration" min="0" type="number" required="required" placeholder="Enter Days"/>
-		<form:errors path="rentalDuration" />
-		<br>
-		<form:label path="length">Length:</form:label><br>
-		<form:input class="input" path="length" min="0" type="number" required="required" placeholder="Enter Length In Minutes"/>
-		<form:errors path="length" />
-		<br>
-		<form:label path="replacementCost">Replacement Cost:</form:label><br>
-		<form:input class="input" path="replacementCost" type="number" min="0" step="0.01" required="required" placeholder="Enter Cost"/>
-		<br>
-	
-		<form:label path="rating">Rating:</form:label><br>
-		<form:input class="input" path="rating" required="required" placeholder="Enter Rating"/>
-		<form:errors path="rating" />
-		<br>
-		
-	    <input class="submit" type="submit" value="Submit" />
-	</form:form>
+	<br>
+	<br>
+	<form action="deleteFilm.do" method="POST">
+		Please enter film ID of the film you would like to delete:<br> <input
+			class="input" type="number" required="required" name="id"> <input
+			class="submit" type="submit" value="Delete Film" />
+	</form>
+	<br>
+
+<button type="button" onclick="document.location='index.html'">Return to Main Menu</button>
 
 </body>
 </html>

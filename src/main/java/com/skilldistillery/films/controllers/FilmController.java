@@ -2,6 +2,8 @@ package com.skilldistillery.films.controllers;
 import java.sql.SQLException;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,21 +61,23 @@ public class FilmController {
 	}
 	
 	@RequestMapping(path="addFilmToDatabase.do", method=RequestMethod.POST)
-	public ModelAndView addFilm(Film film)
+	public ModelAndView addFilm(@Valid Film film)
 	{
 		Film f = filmDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
-		mv.addObject(f);
-		mv.setViewName("redirect:filmCreated.do");
+		mv.addObject("newFilm", f);
+		mv.setViewName("/WEB-INF/createFilm.jsp");
 		return mv;
 	}
 	
-	@RequestMapping(path="filmCreated.do", method=RequestMethod.GET)
-	public ModelAndView created() {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("/WEB-INF/filminfo.jsp");
-		return mv;
-	}
+//	@RequestMapping(path="filmCreated.do", method=RequestMethod.GET)
+//	public ModelAndView created(@Valid Film film) {
+//		Film f = filmDAO.createFilm(film);
+//		ModelAndView mv = new ModelAndView();
+//		mv.addObject("newFilm", f);
+//		mv.setViewName("/WEB-INF/createFilm.jsp");
+//		return mv;
+//	}
 	
 	@RequestMapping(path="deleteFilm.do", method=RequestMethod.POST)
 	public ModelAndView deleteFilm(@RequestParam("id") Integer filmId) {

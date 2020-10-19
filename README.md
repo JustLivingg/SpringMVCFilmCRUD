@@ -16,7 +16,9 @@ This project built off of the Film Query App assignment of Week 7, as well as co
 ## Usage
 This project allows the user to access a mySQL database of films.
 
-The user can enter a film and see details about that film in a web page. 
+The user can enter a film and see details about that film in a web page.
+
+https://github.com/JustLivingg/SpringMVCFilmCRUD/issues/1#issue-724483678
 
 The user can also add films to the database, edit existing records, and delete films they added from the database.
 

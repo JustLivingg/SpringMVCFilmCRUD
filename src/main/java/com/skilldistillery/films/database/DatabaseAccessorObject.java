@@ -272,19 +272,21 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 	}
 
 	@Override
-	public boolean updateFilm(Film film, String column, String columnValue) {
+	public boolean updateFilm(Film film, String columnName, String columnValue) {
 		Connection conn = null;
-		if (column.equals("id")) {
+		if (columnName.equals("id")) {
 			return false;
 		} else {
 			try {
 				conn = DriverManager.getConnection(URL, user, pass);
 				conn.setAutoCommit(false); // START TRANSACTION
 
-				String sql = "UPDATE FILM SET column = columnValue " + "WHERE id = ?";
+				String sql = "UPDATE FILM SET ? = ? WHERE id = ?";
 
 				PreparedStatement stmt = conn.prepareStatement(sql);
-				stmt.setInt(1, film.getId());
+				stmt.setString(1, columnName);
+				stmt.setString(2, columnValue);
+				stmt.setInt(3, film.getId());
 
 				int updateCount = stmt.executeUpdate();
 
@@ -296,7 +298,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 				stmt.close();
 				conn.close();
 			} catch (SQLException sqle) {
-				// TODO Auto-generated catch block
 				sqle.printStackTrace();
 			}
 		}

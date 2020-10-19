@@ -38,7 +38,7 @@
 			class="submit" type="submit" value="Delete Film" />
 	</form>
 	<br>
-	<form action="editFilmForm.do" method="GET">
+	<form action="getEditFilmForm.do" method="GET">
 		<strong>Please enter film ID to edit fields:</strong><br> <input
 			class="input" min="0" type="number" name="id"> <input
 			class="submit" type="submit" value="Edit Film" />

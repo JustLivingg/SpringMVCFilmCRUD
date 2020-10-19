@@ -32,7 +32,7 @@
 
 	<br>
 	<br>
-	<form action="deleteFilm.do" method="POST">
+<%-- 	<form action="deleteFilm.do" method="POST">
 		<strong>Please enter film ID of the film you would like to delete:</strong><br> <input
 			class="input" type="number" required="required" name="id"> <input
 			class="submit" type="submit" value="Delete Film" />
@@ -43,7 +43,7 @@
 		<strong>Please enter film ID to edit fields:</strong><br> <input
 			class="input" min="0" type="number" name="id"> <input
 			class="submit" type="submit" value="Edit Film" />
-	</form>
+	</form> --%>
 	<br>
 	<button type="button" onclick="document.location='index.html'">Return
 		to Main Menu</button>

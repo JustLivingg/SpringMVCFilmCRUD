@@ -101,18 +101,35 @@ public class FilmController {
 		return mv;
 	}
 
-	@RequestMapping(path = "editFilmForm.do", method = RequestMethod.GET, params = "id")
-	private ModelAndView getEditForm(@RequestParam("id") Integer filmId) {
+	@RequestMapping(path = "editFilmForm.do", method = RequestMethod.POST)
+	private ModelAndView editFilm(Film film, @RequestParam("columnName") String columnName, @RequestParam("columnValue") String columnValue) {
 		ModelAndView mv = new ModelAndView();
-		Film f;
-		try {
-			f = filmDAO.findFilmById(filmId);
-			mv.addObject("film", f);
-			mv.setViewName("/WEB-INF/createFilm.jsp");
-		} catch (SQLException e) {
-			e.printStackTrace();
+		Film f = null;
+		Boolean filmUpdated = false;
+		filmUpdated = filmDAO.updateFilm(film, columnName, columnValue);
+		if(filmUpdated == true) {
+			try {
+				f = filmDAO.findFilmById(film.getId());
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		mv.addObject("film", f);
+		mv.setViewName("/WEB-INF/filminfo.jsp");
 		}
 		return mv;
+	}
+		@RequestMapping(path = "getEditFilmForm.do", method = RequestMethod.GET)
+		private ModelAndView getEditFormHtml(@RequestParam("id") int filmId) {
+			ModelAndView mv = new ModelAndView();
+			Film f;
+			try {
+				f = filmDAO.findFilmById(filmId);
+				mv.addObject("film", f);
+				mv.setViewName("/WEB-INF/editFilm.jsp");
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return mv;
 
 	}
 }

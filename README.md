@@ -22,17 +22,21 @@ The user can also add films to the database, edit existing records, and delete f
 
 The user is also able to search for films by keyword. From there, they can choose to edit, delete a film, or return to the main menu.
 
-## Development
+## Development 
+User can enter a film and see the results displayed on a web page.
+User can choose to add a new film and enter all properties of the film. Our DAO implementation then saves this information to the database. User also has the option to delete films they added from the database. User can search films from the database by keyword, then update or delete from the resulting list.
 
 
 ## Known Bugs
+Features associated with User Story 4 and 6 are still in production. 
+There is an error on mapping the JSP to the HTML film and getting the values of the HTML file and SQL to match.
 
 
 ## Technologies Used
-Java
-mySQL
-HTML
-Spring Tool Suite
+*Java
+*mySQL
+*HTML
+*Spring Tool Suite
 
 ## Authors
 Justin Livingston

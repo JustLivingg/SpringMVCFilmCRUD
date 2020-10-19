@@ -30,6 +30,8 @@ https://github.com/JustLivingg/SpringMVCFilmCRUD/issues/3#issue-724490157
 ## Development 
 User can enter a film and see the results displayed on a web page.
 
+https://github.com/JustLivingg/SpringMVCFilmCRUD/issues/5#issue-724495612
+
 User can choose to add a new film and enter all properties of the film. Our DAO implementation then saves this information to the database. User also has the option to delete films they added from the database. User can search films from the database by keyword, then update or delete from the resulting list.
 
 
